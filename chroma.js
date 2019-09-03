@@ -2770,10 +2770,16 @@
     var floor$2 = Math.floor;
     var random = Math.random;
 
-    var random_1 = function () {
+    var random_1 = function (optionalRandomFunction) {
+        var randomFunction = undefined;
+        if (optionalRandomFunction) {
+            randomFunction = optionalRandomFunction;
+        } else {
+            randomFunction = random;
+        }
         var code = '#';
         for (var i=0; i<6; i++) {
-            code += digits.charAt(floor$2(random() * 16));
+            code += digits.charAt(floor$2(randomFunction() * 16));
         }
         return new Color_1(code, 'hex');
     };
